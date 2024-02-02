@@ -1,17 +1,21 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import authRoutes from "./routes/auth.routes.js";
 
 dotenv.config();
 const app = express();
-
+app.use(express.json());
+const port = process.env.PORT;
 mongoose
-    .connect("mongodb://127.0.0.1:27017/blog")
-    .then(
-        app.listen(3000, () => {
-            console.log(`Server running on prot 3000`)
-        })
-    )
-    .catch(err => {
-        console.log(err)
+  .connect(process.env.MONGO_URI)
+  .then(
+    app.listen(port, () => {
+      console.log(`Server running on prot ${port}`);
     })
+  )
+  .catch((err) => {
+    console.log(err);
+  });
+
+app.use("/api/auth", authRoutes);
