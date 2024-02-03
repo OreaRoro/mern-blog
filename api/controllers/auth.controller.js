@@ -21,9 +21,8 @@ export const signup = async (req, res, next) => {
     res.status(200).json("Signup successfull");
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(401).json("Utilisateur existe déjà");
+      return next(erroHandler(400, "Utilisateur déjà inscrit."));
     }
-    console.log(error.code);
     next(error);
   }
 };
