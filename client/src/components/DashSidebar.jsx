@@ -24,6 +24,7 @@ export default function DashSidebar() {
               label={"User"}
               labelColor="dark"
               className="cursor-pointer"
+              as="div"
             >
               Profile
             </Sidebar.Item>
