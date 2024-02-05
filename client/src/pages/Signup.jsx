@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Spinner } from "flowbite-react";
+import OAuth from "../components/OAuth";
 
 export default function Signup() {
   const [isShow, setIsShow] = useState(false);
@@ -108,6 +109,7 @@ export default function Signup() {
                 "S’enregistrer"
               )}
             </Button>
+            <OAuth />
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Vous avez un compte ?</span>
