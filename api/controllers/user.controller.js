@@ -64,3 +64,18 @@ export const updateUser = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteUser = async (req, res, next) => {
+  if (req.user.id !== req.params.userId) {
+    return next(
+      erroHandler(401, "Vous n’êtes pas autorisé à supprimé cet utilisateur")
+    );
+  }
+
+  try {
+    await User.findByIdAndDelete(req.params.userId);
+    res.status(200).json("Utilisateur supprimé");
+  } catch (error) {
+    next(error);
+  }
+};
