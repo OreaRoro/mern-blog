@@ -46,7 +46,10 @@ export const signin = async (req, res, next) => {
       expiresIn: "3d",
     });
     const { password: pass, ...rest } = user._doc;
-    res.status(200).cookie("acces_token", token, { httpOnly: true }).json(rest);
+    res
+      .status(200)
+      .cookie("access_token", token, { httpOnly: true })
+      .json(rest);
   } catch (error) {
     next(error);
   }
